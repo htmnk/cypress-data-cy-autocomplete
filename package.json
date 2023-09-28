@@ -1,0 +1,31 @@
+{
+  "name": "cypress-data-cy-autocomplete",
+  "version": "1.0.0",
+  "description": "A getDataCy Cypress command, which autocompletes data-cy selectors. ",
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/htmnk/cypress-data-cy-autocomplete.git"
+  },
+  "keywords": [
+    "cypress-plugin",
+    "getDataCy",
+    "TypeScript",
+    "selectors"
+  ],
+  "author": "Erik Petrinec <petrinece@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/htmnk/cypress-data-cy-autocomplete/issues"
+  },
+  "homepage": "https://github.com/htmnk/cypress-data-cy-autocomplete#readme",
+  "devDependencies": {
+    "cypress": "^13.3.0"
+  }
+}
