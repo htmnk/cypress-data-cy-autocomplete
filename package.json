@@ -1,13 +1,14 @@
 {
   "name": "cypress-data-cy-autocomplete",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A getDataCy Cypress command, which autocompletes data-cy selectors. ",
   "main": "src/index.js",
   "files": [
     "src"
   ],
   "scripts": {
-    "test": "cypress run"
+    "test": "cypress run",
+    "cypress:open": "npx cypress open"
   },
   "repository": {
     "type": "git",
@@ -27,5 +28,8 @@
   "homepage": "https://github.com/htmnk/cypress-data-cy-autocomplete#readme",
   "devDependencies": {
     "cypress": "^13.3.0"
+  },
+  "dependencies": {
+    "glob": "^10.3.10"
   }
 }
