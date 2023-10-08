@@ -27,9 +27,11 @@
   },
   "homepage": "https://github.com/htmnk/cypress-data-cy-autocomplete#readme",
   "devDependencies": {
+    "@cypress/code-coverage": "^3.12.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "cypress": "^13.3.0",
+    "nyc": "^15.1.0",
     "semantic-release": "^22.0.5"
   },
   "dependencies": {

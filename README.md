@@ -2,5 +2,7 @@
 
 
 ## License
+This project is released under the [MIT License][license-url].
 
-MIT License 
+<!-- Links: -->
+[license-url]: https://github.com/htmnk/cypress-data-cy-autocomplete/blob/main/LICENSE
