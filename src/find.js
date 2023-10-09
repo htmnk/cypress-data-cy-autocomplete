@@ -43,7 +43,7 @@ async function findSelectorsFilesAsync(filesPattern, selectorRegex) {
 
     await Promise.all(readPromises);
   } catch (error) {
-    console.error("Error during file globbing:", error.message);
+    console.error("TODO: Error during file globbing:", error.message);
   }
 
   return Array.from(selectors).sort();
