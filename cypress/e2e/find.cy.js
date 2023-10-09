@@ -62,56 +62,45 @@ describe("find", () => {
 
   describe("findSelectorsFilesAsync using default srcSelectorRegex and testsSelectorRegex", () => {
     it("should return an empty array for non-existing paths", () => {
-      cy.task("findSrcSelectorsAsync", "does/not/exist", /[0-9]/g).then(
-        (selectors) => {
-          cy.wrap(selectors).should("deep.equal", []);
-        }
-      );
+      cy.request('POST', '/find-default-src', { srcPattern: "does/not/exist" }).as('find')
+      cy.get('@find').should((response) => {
+        expect(response.body).to.deep.equal([])
+      })
     });
 
     it("should return an empty array for files with no selectors inside or for files with unknown extensions", () => {
-      cy.task("findSrcSelectorsAsync", {
-        filesPattern: "cypress/examples/example1/" + defaultOptions.srcPattern,
-      }).then((selectors) => {
-        cy.wrap(selectors).should("deep.equal", []);
-      });
-
-      cy.task("findTestsSelectorsAsync", {
-        filesPattern:
-          "cypress/examples/example1/" + defaultOptions.testsPattern,
-      }).then((selectors) => {
-        cy.wrap(selectors).should("deep.equal", []);
-      });
+      cy.request('POST', '/find-default-src', { srcPattern: "cypress/examples/example1/" + defaultOptions.srcPattern }).as('findSrc')
+      cy.get('@findSrc').should((response) => {
+        expect(response.body).to.deep.equal([])
+      })
+      cy.request('POST', '/find-default-tests', { testsPattern: "cypress/examples/example1/" + defaultOptions.testsPattern }).as('findTests')
+      cy.get('@findTests').should((response) => {
+        expect(response.body).to.deep.equal([])
+      })
     });
 
     it("should find selectors in a single file", () => {
-      cy.task("findSrcSelectorsAsync", {
-        filesPattern: "cypress/examples/example2/" + defaultOptions.srcPattern,
-      }).then((selectors) => {
-        cy.wrap(selectors).should("deep.equal", ["bar", "foo"]);
-      });
+      cy.request('POST', '/find-default-src', { srcPattern: "cypress/examples/example2/" + defaultOptions.srcPattern }).as('findSrc')
+      cy.get('@findSrc').should((response) => {
+        expect(response.body).to.deep.equal(["bar", "foo"])
+      })
 
-      cy.task("findTestsSelectorsAsync", {
-        filesPattern:
-          "cypress/examples/example2/" + defaultOptions.testsPattern,
-      }).then((selectors) => {
-        cy.wrap(selectors).should("deep.equal", ["bar", "foo"]);
-      });
+      cy.request('POST', '/find-default-tests', { testsPattern: "cypress/examples/example2/" + defaultOptions.testsPattern }).as('findTests')
+      cy.get('@findTests').should((response) => {
+        expect(response.body).to.deep.equal(["bar", "foo"])
+      })
     });
 
     it("should find selectors in multiple files", () => {
-      cy.task("findSrcSelectorsAsync", {
-        filesPattern: "cypress/examples/example3/" + defaultOptions.srcPattern,
-      }).then((selectors) => {
-        cy.wrap(selectors).should("deep.equal", ["one", "two", "three", "four"].sort());
-      });
+      cy.request('POST', '/find-default-src', { srcPattern: "cypress/examples/example3/" + defaultOptions.srcPattern }).as('findSrc')
+      cy.get('@findSrc').should((response) => {
+        expect(response.body).to.deep.equal(["one", "two", "three", "four"].sort())
+      })
 
-      cy.task("findTestsSelectorsAsync", {
-        filesPattern:
-          "cypress/examples/example3/" + defaultOptions.testsPattern,
-      }).then((selectors) => {
-        cy.wrap(selectors).should("deep.equal", ["one", "two", "three", "four"].sort());
-      });
+      cy.request('POST', '/find-default-tests', { testsPattern: "cypress/examples/example3/" + defaultOptions.testsPattern }).as('findTests')
+      cy.get('@findTests').should((response) => {
+        expect(response.body).to.deep.equal(["one", "two", "three", "four"].sort())
+      })
     })
   });
 });
