@@ -1,6 +1,6 @@
 {
   "name": "cypress-data-cy-autocomplete",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A getDataCy Cypress command, which autocompletes data-cy selectors. ",
   "main": "src/index.js",
   "files": [
