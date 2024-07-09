@@ -37,6 +37,6 @@
     "semantic-release": "^22.0.5"
   },
   "dependencies": {
-    "glob": "^10.3.10"
+    "glob": "^11.0.0"
   }
 }
